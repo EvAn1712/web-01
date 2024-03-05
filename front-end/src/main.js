@@ -14,22 +14,14 @@ const outlet = document.querySelector("#content-outlet");
 const router = new Router(outlet);
 router
     .register("", {
-      component: WelcomeComponent,
-      // TODO #import-html: remove the templateUrl property.
-      templateUrl: "/src/app/views/welcome.html",
+        component: WelcomeComponent,
     })
     .register("welcome", {
-      component: WelcomeComponent,
-      // TODO #import-html: remove the templateUrl property.
-      templateUrl: "/src/app/views/welcome.html",
+        component: WelcomeComponent,
     })
     .register("game", {
-      component: GameComponent,
-      // TODO #import-html: remove the templateUrl property.
-      templateUrl: "/src/app/views/game.html",
+        component: GameComponent,
     })
     .register("score", {
-      component: ScoreComponent,
-      // TODO #import-html: remove the templateUrl property.
-      templateUrl: "/src/app/views/score.html",
+        component: ScoreComponent,
     });

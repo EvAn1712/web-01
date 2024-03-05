@@ -2,12 +2,14 @@
 // TODO #import-html: use ES default imports to import game.html as template
 // TODO #export-functions: remove the IIFE
 import { parseUrl } from "./utils";
+import template from "../views/score.html";
 
 // TODO #export-functions: export function ScoreComponent
 // TODO #class: use the ES6 class keyword
 /* class ScoreComponent constructor */
 export function ScoreComponent() {
   // TODO #extends: call super(template)
+  this.template = template;
   var params = parseUrl();
   // TODO #import-html: assign template to this.template
   this.name = params.name;
