@@ -10,7 +10,7 @@ import template from "../views/score.html";
 export function ScoreComponent() {
   // TODO #extends: call super(template)
   this.template = template;
-  var params = parseUrl();
+  let params = parseUrl();
   // TODO #import-html: assign template to this.template
   this.name = params.name;
   this.size = parseInt(params.size);

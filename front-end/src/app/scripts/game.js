@@ -3,7 +3,7 @@ import { parseUrl } from "./utils";
 import template from "../views/game.html";
 import { Component } from "./component";
 
-var CARD_TEMPLATE = ""
+let CARD_TEMPLATE = ""
     .concat('<main class="card-cmp">')
     .concat('  <div class="card-wrapper">')
     .concat('    <img class="card front-face" alt="card" />')
@@ -11,7 +11,7 @@ var CARD_TEMPLATE = ""
     .concat("  </div>")
     .concat("</main>");
 
-var environment = {
+let environment = {
   api: {
     host: "http://localhost:8081",
   },
@@ -27,7 +27,7 @@ export class GameComponent extends Component{
   // TODO #extends: call super(template)
     super(template)
   // gather parameters from URL
-  var params = parseUrl();
+  let params = parseUrl();
 
   // TODO #import-html: assign template to this.template
   this.template = template;
@@ -49,50 +49,42 @@ init() {
   this.fetchConfig(
       // TODO #arrow-function: use arrow function instead.
       function (config) {
+        let i;
         this._config = config;
         this._boardElement = document.querySelector(".cards");
 
         // create cards out of the config
         this._cards = [];
         // TODO #functional-programming: use Array.map() instead.
-        for (var i in this._config.ids) {
+        for (i in this._config.ids) {
           this._cards[i] = new CardComponent(this._config.ids[i]);
         }
 
         // TODO #functional-programming: use Array.forEach() instead.
-        // TODO #let-const: replace var with let.
-        for (var i in this._cards) {
-          var card = this._cards[i];
+        
+        for (i in this._cards) {
+          let card = this._cards[i];
+          this._boardElement.appendChild(card.getElement());
 
-          // TODO #let-const: extract function _appendCard (ie: copy its body here and remove the function)
-          this._appendCard(card);
+          card.getElement().addEventListener(
+              "click",
+              function () {
+                this._flipCard(card);
+              }.bind(this)
+          );
         }
 
         this.start();
       }.bind(this)
   );
 };
-// TODO #class: turn function into a method of GameComponent
 
-
-/* method GameComponent._appendCard */
-_appendCard(card) {
-  this._boardElement.appendChild(card.getElement());
-
-  card.getElement().addEventListener(
-      "click",
-      // TODO #arrow-function: use arrow function instead.
-      function () {
-        this._flipCard(card);
-      }.bind(this)
-  );
-};
 
 // TODO #class: turn function into a method of GameComponent
 /* method GameComponent.start */
 start() {
   this._startTime = Date.now();
-  var seconds = 0;
+  let seconds = 0;
   // TODO #template-literals:  use template literals (backquotes)
   document.querySelector("nav .navbar-title").textContent =
       "Player: " + this._name + ". Elapsed time: " + seconds++;
@@ -111,7 +103,7 @@ start() {
 // TODO #class: turn function into a method of GameComponent
 /* method GameComponent.fetchConfig */
 fetchConfig(cb) {
-  var xhr =
+  let xhr =
       typeof XMLHttpRequest != "undefined"
           ? new XMLHttpRequest()
           : new ActiveXObject("Microsoft.XMLHTTP");
@@ -121,12 +113,11 @@ fetchConfig(cb) {
 
   // TODO #arrow-function: use arrow function instead.
   xhr.onreadystatechange = function () {
-    var status;
-    var data;
+    let data;
     // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
     if (xhr.readyState == 4) {
       // `DONE`
-      status = xhr.status;
+      let status = xhr.status;
       if (status == 200) {
         data = JSON.parse(xhr.responseText);
         cb(data);
@@ -141,7 +132,7 @@ fetchConfig(cb) {
 // TODO #class: turn function into a method of GameComponent
 /* method GameComponent.goToScore */
 goToScore() {
-  var timeElapsedInSeconds = Math.floor(
+  let timeElapsedInSeconds = Math.floor(
       (Date.now() - this._startTime) / 1000
   );
   clearInterval(this._timer);
@@ -150,7 +141,7 @@ goToScore() {
       // TODO #arrow-function: use arrow function instead.
       function () {
         // TODO #spa: replace with './#score'
-        var scorePage = "./#score";
+        let scorePage = "./#score";
         // TODO #template-literals:  use template literals (backquotes)
         window.location =
             scorePage +
@@ -233,7 +224,7 @@ import card7 from "/src/assets/cards/card-7.png";
 import card8 from "/src/assets/cards/card-8.png";
 import card9 from "/src/assets/cards/card-9.png";
 // TODO #import-assets: use ES default import to import images.
-var CARDS_IMAGE = [
+let CARDS_IMAGE = [
   back,
   card0,
   card1,
