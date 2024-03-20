@@ -1,11 +1,12 @@
-// TODO #import-html: use ES default imports to import welcome.html as template
+// TODO #import-html: use ES default imports to import welcome.component.html as template
 // TODO #export-functions: remove the IIFE
 
 // TODO #export-functions: export function WelcomeComponent
 // TODO #class: use the ES6 class keyword
 /* class WelcomeComponent constructor  */
-import template from "../views/welcome.html";
-import {Component} from "./component";
+import template from "./welcome.component.html";
+import {Component} from "../../scripts/component";
+import "./welcome.component.css";
 
 export class WelcomeComponent  extends Component{
     constructor() {
