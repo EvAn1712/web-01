@@ -2,7 +2,6 @@ import {Component} from "../../../scripts/component";
 import "./card.component.css";
 import CARD_TEMPLATE from "./card.component.html";
 
-// TODO #card-component: Change images location to /app/components/game/card/assets/***.png
 import back from "/src/app/components/game/card/assets/cards/back.png";
 import card0 from "/src/app/components/game/card/assets/cards/card-0.png";
 import card1 from "/src/app/components/game/card/assets/cards/card-1.png";
@@ -15,7 +14,6 @@ import card7 from "/src/app/components/game/card/assets/cards/card-7.png";
 import card8 from "/src/app/components/game/card/assets/cards/card-8.png";
 import card9 from "/src/app/components/game/card/assets/cards/card-9.png";
 
-// TODO #import-assets: use ES default import to import images.
 let CARDS_IMAGE = [
     back,
     card0,
@@ -30,15 +28,12 @@ let CARDS_IMAGE = [
     card9,
 ];
 
-// TODO #class: use the ES6 class keyword
-// TODO #extends: extends Component
-/* class CardComponent constructor */
+
 export class CardComponent extends Component {
     constructor(id) {
         super(CARD_TEMPLATE)
         this._id = id;
 
-        // TODO #extends: call super(CARD_TEMPLATE)
         // is this card flipped?
         this._flipped = false;
         this.template = CARD_TEMPLATE;
@@ -57,27 +52,18 @@ export class CardComponent extends Component {
         this._imageElt.querySelector("img.back-face").src = CARDS_IMAGE[0];
     }
 
-
-    /* method CardComponent.getElement */
     getElement() {
         return this._elt;
     };
 
-// TODO #class: turn function into a method of CardComponent
-    /* method CardComponent.flip */
     flip() {
         this._imageElt.classList.toggle("flip");
         this._flipped = !this._flipped;
     };
 
-// TODO #class: turn function into a method of CardComponent
-    /* method CardComponent.equals */
     equals(card) {
         return card._id === this._id;
     };
-
-// TODO #class: turn function into a method of CardComponent
-    /* CardComponent.get flipped() */
 
     get flipped() {
         return this._flipped;

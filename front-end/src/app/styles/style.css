@@ -1,6 +1,3 @@
-/*****
- * GLOBAL STYLE
- */
 
 body {
   display: flex;
@@ -16,7 +13,6 @@ body > main {
   overflow: auto;
 }
 
-/* global style */
 .bg-primary {
   background-color: #cb2468 !important;
 }

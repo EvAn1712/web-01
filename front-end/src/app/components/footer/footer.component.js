@@ -5,6 +5,5 @@ export class FooterComponent extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = template;
-        // ...
     }
 }
