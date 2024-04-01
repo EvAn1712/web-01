@@ -2,11 +2,9 @@ import {config} from './config.js';
 import _ from 'lodash';
 import chalk from 'chalk';
 
-// express
 import express from 'express';
 import cors from 'cors';
 
-// swagger
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 

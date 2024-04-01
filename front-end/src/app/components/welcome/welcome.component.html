@@ -1,3 +1,5 @@
+<script src="../../scripts/utils.js"></script>
+<script src="./welcome.component.js"></script>
 <main class="welcome-cmp">
   <div class="container">
     <form id="start-form" class="form-signin card" novalidate>
@@ -17,7 +19,7 @@
           />
           <small id="nicknameHelp" class="form-text text-muted"
           >Any nickname with characters 3 to 20 alphanumeric
-            charachers
+            characters
           </small>
 
           <div class="invalid-feedback">
@@ -61,5 +63,5 @@
   </div>
 </main>
 <script>
-  var wc = new WelcomeComponent().init();
+  new WelcomeComponent().init();
 </script>

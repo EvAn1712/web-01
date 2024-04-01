@@ -34,12 +34,8 @@ export class CardComponent extends Component {
         super(CARD_TEMPLATE)
         this._id = id;
 
-        // is this card flipped?
         this._flipped = false;
         this.template = CARD_TEMPLATE;
-
-        // has the matching card has been discovered already?
-        this.matched = false;
 
         this._elt = document.createElement("div");
         this._elt.innerHTML = this.template;

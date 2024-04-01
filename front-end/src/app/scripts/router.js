@@ -1,9 +1,4 @@
 
-/**
- * Append an html template to the document, at the given outlet.
- * @param HTMLElement outlet the location on the document to add the template
- * @param HTMLElement template the template to append
- */
 function renderTemplate(outlet, template) {
   while (outlet.lastChild) {
     outlet.removeChild(outlet.lastChild);
@@ -11,11 +6,6 @@ function renderTemplate(outlet, template) {
   outlet.appendChild(template);
 }
 
-
-/**
- * Create a new router. This router will load components into the given outlet.
- * @param {HTMLElement} outlet The element to put components into.
- */
 
 export function Router(outlet) {
   this._components = {};
@@ -32,14 +22,8 @@ export function Router(outlet) {
 
 
 
-/**
- * Bind a component ot be displayed when the registered URL is reached.
- * @param hash
- * @param componentEntry
- * @returns {Router}
- */
 Router.prototype.register = function (hash, componentEntry) {
-  var path = `#${hash}`;
+  let path = `#${hash}`;
   if (!componentEntry) {
     throw new TypeError(
         `provided arg should be a Component. Got: ${componentEntry}`
@@ -57,7 +41,7 @@ Router.prototype.register = function (hash, componentEntry) {
   if (componentEntry.templateUrl) {
     if (!this._templates[componentEntry.templateUrl]) {
       this._templates[componentEntry.templateUrl] = true;
-      var _this = this;
+      let _this = this;
       _fetchTemplate(componentEntry.templateUrl, function (template) {
         componentEntry.template = template;
         if (_getRouteHash(window.location.href) === path) {
@@ -125,11 +109,9 @@ function _fetchTemplate(templateUrl, cb) {
   xhr.onreadystatechange = function () {
     let status;
     let data;
-    // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
-    if (xhr.readyState == 4) {
-      // `DONE`
+    if (xhr.readyState === 4) {
       status = xhr.status;
-      if (status == 200) {
+      if (status === 200) {
         data = xhr.responseText;
         cb(data);
       } else {
