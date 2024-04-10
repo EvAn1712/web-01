@@ -31,10 +31,10 @@ IIFE signifie "Immediately Invoked Function Expression". Il était souvent utili
 
 * ### **_Question 5_**
 
-##### What is the difference between `import * from './utils'` and `import { parseUrl } from './utils'`? What can be the consequences of using one instead of the other?
+##### What is the difference between `import * as toto from './utils'` and `import { parseUrl } from './utils'`? What can be the consequences of using one instead of the other?
 
-Lorsque nous utilisons `import * from './utils'`, nous importons toutes les fonctionnalités exportées du module `./utils`.
-En revanche, avec `import {parseUrl } from './utils'`, nous importons spécifiquement uniquement la fonction parseUrl du module `./utils`.
+Lorsque nous utilisons import * as toto from './utils', nous importons toutes les fonctionnalités exportées du module ./utils sous un seul namespace toto. 
+En revanche, avec import { parseUrl } from './utils', nous importons spécifiquement uniquement la fonction parseUrl du module ./utils.
 Les conséquences de l'utilisation de l'une ou l'autre méthode peuvent inclure la gestion de l'espace de noms, la clarté et la lisibilité du code, ainsi que la taille du bundle final généré lors de la compilation.
 
 * ### **_Question 6_**
